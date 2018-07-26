@@ -2,6 +2,10 @@
 <%@list.tasks.each do |task|%>
 
 <p><%=task.name%></p>
+<form action="/tasks/<%=task.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Completed Task">
+</form>
 <%end%>
 
 
