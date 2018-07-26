@@ -17,3 +17,5 @@ Task.create(name: "Find a Primary Care", importance: 7)
 Task.create(name: "History Assignment", importance: 10)
 Task.create(name: "Clear out closet", importance: 5)
 Task.create(name: "Buy bananas", importance: 5)
+
+list1.tasks << task1
