@@ -1,2 +1,2 @@
-class ListController < Sinatra::Base
+class ListController  < ApplicationController 
 end
