@@ -11,7 +11,11 @@ class TaskController  < ApplicationController
 end
 
 post "/tasks" do
-  @task = Task.create(params)
+  @task = Task.create(params[:task])
+  if params[:list][:name].empty?
+    @task.list = List.create(params[:list])
+end
+@task.save
   redirect "/lists/#{@task.list.id}"
 end
 
