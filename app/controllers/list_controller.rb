@@ -30,4 +30,11 @@ post "/lists" do
     redirect "/lists"
 end
 
+delete '/lists/:id/delete' do
+  @list = List.find_by(params[:id])
+  @list.delete
+redirect to '/lists'
+end
+
+
 end

@@ -2,3 +2,14 @@
 <%@list.tasks.each do |task|%>
 <%=task.name%>
 <%end%>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<form action="/lists/<%=@list.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete List">
+</form>
