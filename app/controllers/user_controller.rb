@@ -11,6 +11,7 @@ class UserController  < ApplicationController
     @user = User.create(params)
     @user.save
   session[:user_id] = @user.id
+  redirect to '/lists'
   end
 end
 
