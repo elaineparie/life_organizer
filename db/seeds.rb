@@ -10,12 +10,10 @@ List.create(name: "Work")
 List.create(name: "Family")
 List.create(name: "Appointments")
 
-Task.create(name: "Family reunion this Sunday!", importance: 6)
-Task.create(name: "Answer all emails", importance: 9)
-Task.create(name: "Find a Primary Care", importance: 7)
+Task.create(name: "Family reunion this Sunday!", importance: 6, list_id: 1)
+Task.create(name: "Answer all emails", importance: 9, list_id: 2)
+Task.create(name: "Find a Primary Care", importance: 7, list_id: 3)
 
-Task.create(name: "History Assignment", importance: 10)
-Task.create(name: "Clear out closet", importance: 5)
-Task.create(name: "Buy bananas", importance: 5)
-
-list1.tasks << task1
+Task.create(name: "History Assignment", importance: 10, list_id: 4)
+Task.create(name: "Clear out closet", importance: 5, list_id: 5)
+Task.create(name: "Buy bananas", importance: 5, list_id: 6)

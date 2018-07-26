@@ -9,6 +9,17 @@ get "/lists/new" do
   erb :'lists/new'
 end
 
+get "/lists/:id/edit" do
+  @list = List.find(params[:id])
+  erb :'lists/edit'
+end
+
+post "/lists/:id" do
+  @list = List.find(params[:id])
+  @list.update(params)
+  redirect "/lists/#{@list.id}"
+end
+
 get "/lists/:id" do
   @list = List.find(params[:id])
   erb :'lists/show'
