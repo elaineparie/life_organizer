@@ -6,3 +6,6 @@ end
 
 use Rack::MethodOverride
 run ApplicationController
+use ListController
+use TaskController
+use UserController
