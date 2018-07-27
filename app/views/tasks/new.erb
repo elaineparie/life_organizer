@@ -1,4 +1,4 @@
-<a href="/lists">Home</a>
+<a href="/lists">Home</a></br>
 <h1>Add a Task!</h1>
 
 <form action="/tasks" method="POST">
@@ -13,7 +13,13 @@
   <%@lists.each do |list|%>
     <input type="checkbox" name="task[list_id]" value="<%=list.id%>" id="<%=list.id%>"><%=list.name%></input>
 <%end%>
-
+</br>
+</br>
+<label>How importance is this task?</label>
+<%number_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]%>
+<%number_array.each do |number|%>
+  <input type="checkbox" name="task[importance]" value="number"><%=number%></input>
+<%end%>
 <br></br>
 
 and/or, create a new list:
