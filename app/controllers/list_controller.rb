@@ -17,11 +17,13 @@ end
 post "/lists/:id" do
   @list = List.find(params[:id])
   @list.update(params)
+  @task = Task.find(params[:id])
   redirect "/lists/#{@list.id}"
 end
 
 get "/lists/:id" do
   @list = List.find(params[:id])
+#  @task = Task.find_by(params[:id])
   erb :'lists/show'
 end
 

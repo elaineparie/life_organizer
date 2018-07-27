@@ -11,7 +11,7 @@ class TaskController  < ApplicationController
 end
 
 get "/tasks/:id" do
-    @list = List.find(params[:id])
+    @task = Task.find(params[:id])
   erb :'tasks/show'
 end
 
