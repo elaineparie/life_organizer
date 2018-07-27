@@ -27,7 +27,7 @@ end
 delete '/tasks/:id/delete' do
   @task = Task.find_by(params[:id])
   @task.delete
-redirect to '/tasks'
+  redirect to '/lists'
 end
 
 
