@@ -1,3 +1,7 @@
+<a href="/lists">Home</a>
+<a href="/lists/new">Create New List</a>
+</br>
+<a href="/tasks/new">Create New Task</a>
 <h1>Your Lists!</h1>
 <%@lists.each do |list|%>
 <p><a href="/lists/<%=list.id%>"><%=list.name%></p>

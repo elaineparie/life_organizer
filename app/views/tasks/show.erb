@@ -1,7 +1,8 @@
+<a href="/lists">Home</a>
 <h3>Your Tasks in <%=@task.list.name%>:</h3>
 <p><%=@task.name%></p>
 
 <form action="/tasks/<%=@task.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Completed Task">
+  <input type="submit" value="Delete Task">
 </form>
