@@ -44,13 +44,13 @@ post "/lists" do
   unless List.valid_params?(params)
       redirect "/lists/new?error=invalid list"
     end
-    List.create(params)
+    @list = List.create(params)
+    @list.save
     redirect "/lists"
 end
 
 delete '/lists/:id/delete' do
   redirect_if_not_logged_in
-  @error_message = params[:error]
   @list = List.find_by(params[:id])
   @list.delete
 redirect to '/lists'
