@@ -36,7 +36,6 @@ get "/lists/:id" do
   @error_message = params[:error]
   @list = List.find(params[:id])
   @tasks = @list.tasks.order("importance DESC")
-#  @task = Task.find_by(params[:id])
   erb :'lists/show'
 end
 

@@ -4,6 +4,11 @@
 <%@tasks.each.with_index(1) do |task, index|%>
 <p><%=index%>.
 <a href='/tasks/<%=task.id%>'><%=task.name%></a></p>
+<form action="/tasks/<%=task.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Task">
+</form>
+
 <%end%>
 
 
