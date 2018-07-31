@@ -37,7 +37,7 @@ end
 delete '/tasks/:id/delete' do
   redirect_if_not_logged_in
   @error_message = params[:error]
-  @task = Task.find_by(params[:id])
+  @task = Task.find(params[:id])
   @task.delete
   redirect to '/lists'
 end

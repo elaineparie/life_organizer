@@ -1,7 +1,7 @@
 <a href="/lists">Home</a></br>
 <a href="/logout">logout</a></br>
 <h3>Tasks:</h3>
-<%@list.tasks.each.with_index(1) do |task, index|%>
+<%@tasks.each.with_index(1) do |task, index|%>
 <p><%=index%>.
 <a href='/tasks/<%=task.id%>'><%=task.name%></a></p>
 <%end%>

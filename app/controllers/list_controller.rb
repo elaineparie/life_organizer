@@ -35,6 +35,7 @@ get "/lists/:id" do
   redirect_if_not_logged_in
   @error_message = params[:error]
   @list = List.find(params[:id])
+  @tasks = @list.tasks.order("importance DESC")
 #  @task = Task.find_by(params[:id])
   erb :'lists/show'
 end
@@ -51,7 +52,7 @@ end
 
 delete '/lists/:id/delete' do
   redirect_if_not_logged_in
-  @list = List.find_by(params[:id])
+  @list = List.find(params[:id])
   @list.delete
 redirect to '/lists'
 end
