@@ -9,26 +9,25 @@ class TaskController  < ApplicationController
   get "/tasks/new" do
     redirect_if_not_logged_in
     @lists = List.all
-  erb :'tasks/new'
-end
+    erb :'tasks/new'
+  end
 
-get "/tasks/:id" do
-  redirect_if_not_logged_in
+  get "/tasks/:id" do
+    redirect_if_not_logged_in
     @task = Task.find(params[:id])
-  erb :'tasks/show'
-end
+    erb :'tasks/show'
+  end
 
-post "/tasks" do
-
+  post "/tasks" do
   redirect_if_not_logged_in
-  if !Task.valid_params?(params)
+    if !Task.valid_params?(params)
       redirect "/tasks/new?error=invalid list"
     end
-  @task = Task.create(params[:task])
+    @task = Task.create(params[:task])
   if !params[:list][:name].empty?
     @task.list = List.create(params[:list])
-end
-@task.save
+  end
+  @task.save
   redirect "/lists/#{@task.list.id}"
 end
 
@@ -38,8 +37,5 @@ delete '/tasks/:id/delete' do
   @task.delete
   redirect to '/lists'
 end
-
-
-
 
 end
