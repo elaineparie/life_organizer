@@ -2,7 +2,7 @@ class ListController  < ApplicationController
 
   get '/lists' do
   redirect_if_not_logged_in
-    @lists = List.all
+    @lists = current_user.lists
     erb :'lists/index'
   end
 
@@ -42,6 +42,7 @@ end
     end
     @list = List.create(params)
     @list.save
+    current_user.lists << @list
     redirect "/lists"
     end
 

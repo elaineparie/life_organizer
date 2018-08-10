@@ -8,7 +8,8 @@ class TaskController  < ApplicationController
 
   get "/tasks/new" do
     redirect_if_not_logged_in
-    @lists = List.all
+    @lists = current_user.lists
+    @list = List.find(params[:list_id])
     erb :'tasks/new'
   end
 

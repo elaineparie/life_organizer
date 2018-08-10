@@ -12,7 +12,11 @@
   <br></br>
 
   <%@lists.each do |list|%>
-    <input type="checkbox" name="task[list_id]" value="<%=list.id%>" id="<%=list.id%>"><%=list.name%></input>
+    <%if list.id == @list.id%>
+      <input type="checkbox" name="task[list_id]" value="<%=list.id%>" id="<%=list.id%>" checked><%=list.name%></input>
+    <%else%>
+      <input type="checkbox" name="task[list_id]" value="<%=list.id%>" id="<%=list.id%>"><%=list.name%></input>
+    <%end%>
 <%end%>
 </br>
 </br>
