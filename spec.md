@@ -7,7 +7,7 @@ Specs:
 - [x] Include at least one has_many relationship on your User model (x has_many y, e.g. User has_many Posts) - a list has many tasks
 - [x] Include at least one belongs_to relationship on another model (x belongs_to y, e.g. Post belongs_to User) - a task belongs to a list
 - [x] Include user accounts - user must sign up and login
-- [ ] Ensure that users can't modify content created by other users
+- [x] Ensure that users can't modify content created by other users
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 - [x] Include user input validations - page errors when creating a new list of task unless certain requirements are met
 - [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
