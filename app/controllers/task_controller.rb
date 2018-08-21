@@ -23,6 +23,7 @@ class TaskController  < ApplicationController
   end
 
   post "/tasks" do
+    binding.pry
   redirect_if_not_logged_in
     if !Task.valid_params?(params)
       redirect "/tasks/new?error=invalid list"
@@ -32,7 +33,7 @@ class TaskController  < ApplicationController
     @list = List.create(params[:list])
     @task.list = @list
     @list.save
-    current_user.lists << @list
+    Helpers.current_user(session).lists << @list
   end
   @task.save
   redirect "/lists/#{@task.list.id}"
