@@ -31,7 +31,6 @@ class TaskController  < ApplicationController
       redirect "/tasks/new?error=invalid list"
     end
     @task = Task.create(params[:task])
-    Helers.current_user(session).tasks << @task
   if !params[:list][:name].empty?
     @list = List.create(params[:list])
     @task.list = @list
