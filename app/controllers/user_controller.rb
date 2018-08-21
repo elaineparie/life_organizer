@@ -16,14 +16,19 @@ class UserController  < ApplicationController
   get '/signup' do
       erb :'/users/new'
   end
+
   post '/signup' do
   if params[:username].empty? || params[:password].empty?
     redirect to '/signup'
   else
-    @user = User.create(params)
+    @user = User.new(params)
+    if @user.has_unique_username(params)
     @user.save
     session[:user_id] = @user.id
     redirect to '/lists'
+  else
+    redirect '/signup'
+    end
   end
 end
 
