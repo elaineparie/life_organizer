@@ -1,27 +1,35 @@
 class ListController  < ApplicationController
 
   get '/lists' do
-Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     @lists = Helpers.current_user(session).lists
     erb :'lists/index'
   end
 
 
   get "/lists/new" do
-  Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     erb :'lists/new'
   end
 
 
   get "/lists/:id/edit" do
-  Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     @list = List.find(params[:id])
   erb :'lists/edit'
 end
 
 
   post "/lists/:id" do
-  Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     unless List.valid_params?(params)
       redirect "/lists/new?error=invalid list"
     end
@@ -33,7 +41,9 @@ end
 
 
 get "/lists/:id" do
-  Helpers.redirect_if_not_logged_in(session)
+  if !Helpers.redirect_if_not_logged_in(session)
+      redirect "/login?error=invalid request"
+    end
   @list = List.find(params[:id])
   if !Helpers.current_user(session).lists.include?(@list)
     redirect "/lists?error=cannot view that page"
@@ -44,7 +54,9 @@ end
 
 
   post "/lists" do
-Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     unless List.valid_params?(params)
       redirect "/lists/new?error=invalid list"
     end
@@ -56,7 +68,9 @@ Helpers.redirect_if_not_logged_in(session)
 
 
   delete '/lists/:id/delete' do
-  Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
   @list = List.find(params[:id])
   if !Helpers.current_user(session).lists.include?(@list)
     redirect "/lists?error=cannot view that page"

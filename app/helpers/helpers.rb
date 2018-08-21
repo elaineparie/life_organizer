@@ -11,8 +11,6 @@ class Helpers
   def self.redirect_if_not_logged_in(session)
     if Helpers.is_logged_in?(session)
   @user = Helpers.current_user(session)
-  else
-  redirect "/login"
   end
 end
 

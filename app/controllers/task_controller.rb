@@ -1,13 +1,17 @@
 class TaskController  < ApplicationController
 
   get "/tasks" do
-    Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     @tasks = Helpers.current_user(session).tasks
     erb :'tasks/index'
   end
 
   get "/tasks/new" do
-    Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     @lists = Helpers.current_user(session).lists
     erb :'tasks/new'
   #  if params[:list_id]
@@ -17,7 +21,9 @@ class TaskController  < ApplicationController
   end
 
   get "/tasks/:id" do
-    Helpers.redirect_if_not_logged_in(session)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
     @task = Task.find(params[:id])
     if !Helpers.current_user(session).lists.include?(@task.list)
       redirect "/lists?error=cannot view that page"
@@ -26,8 +32,10 @@ class TaskController  < ApplicationController
   end
 
   post "/tasks" do
-  Helpers.redirect_if_not_logged_in(session)
-    if !Task.valid_params?(params)
+    if !Helpers.redirect_if_not_logged_in(session)
+        redirect "/login?error=invalid request"
+      end
+    if !Task.task_valid_params?(params)
       redirect "/tasks/new?error=invalid list"
     end
     @task = Task.create(params[:task])
@@ -42,7 +50,9 @@ class TaskController  < ApplicationController
 end
 
 delete '/tasks/:id/delete' do
-  Helpers.redirect_if_not_logged_in(session)
+  if !Helpers.redirect_if_not_logged_in(session)
+      redirect "/login?error=invalid request"
+    end
   @task = Task.find(params[:id])
   @task.delete
   redirect to '/lists'
