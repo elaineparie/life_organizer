@@ -9,8 +9,11 @@ class TaskController  < ApplicationController
   get "/tasks/new" do
     redirect_if_not_logged_in
     @lists = current_user.lists
-    @list = List.find(params[:list_id])
     erb :'tasks/new'
+  #  if params[:list_id]
+  #    @list = List.find(params[:list_id])
+  #  end
+  #  erb :'tasks/new'
   end
 
   get "/tasks/:id" do
@@ -26,7 +29,10 @@ class TaskController  < ApplicationController
     end
     @task = Task.create(params[:task])
   if !params[:list][:name].empty?
-    @task.list = List.create(params[:list])
+    @list = List.create(params[:list])
+    @task.list = @list
+    @list.save
+    current_user.lists << @list
   end
   @task.save
   redirect "/lists/#{@task.list.id}"
