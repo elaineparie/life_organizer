@@ -22,6 +22,9 @@ class ListController  < ApplicationController
         redirect "/login?error=invalid request"
       end
     @list = List.find(params[:id])
+    if !Helpers.current_user(session).lists.include?(@list)
+      redirect "/lists?error=cannot view that page"
+    end
   erb :'lists/edit'
 end
 
@@ -34,6 +37,9 @@ end
       redirect "/lists/new?error=invalid list"
     end
     @list = List.find(params[:id])
+    if !Helpers.current_user(session).lists.include?(@list)
+      redirect "/lists?error=cannot view that page"
+    end
     @list.update(name: params[:name])
     @task = Task.find(params[:id])
     redirect "/lists/#{@list.id}"
